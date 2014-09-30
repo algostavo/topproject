@@ -1,0 +1,72 @@
+<h3>Major FX Pairs</h3>
+<html>
+<head>
+
+</head>
+<body>
+	
+<form>
+      <label for="getCurrentRates">EUR_USD</label>
+</form>
+
+ <div id='quote-panel'>
+     <div>
+         <span>BID: </span><span id="bid"></span><span>ASK: </span><span id="ask"></span>
+     </div>
+     <div>
+         
+         
+     </div
+</div>
+
+
+
+
+
+<div id="container" style="height: 400px; min-width: 310px"></div>
+<script src="http://code.highcharts.com/stock/highstock.js"></script>
+<script src="http://code.highcharts.com/stock/modules/exporting.js"></script>
+<script type="text/javascript" charset="utf-8" >
+$(function () {
+    $.getJSON(@chartdata, function (data) {
+
+        // create the chart
+        $('#container').highcharts('StockChart', {
+
+
+            rangeSelector : {
+                inputEnabled: $('#container').width() > 480,
+                selected : 1
+            },
+
+            title : {
+                text : 'AAPL Stock Price'
+            },
+
+            series : [{
+                type : 'candlestick',
+                name : 'AAPL Stock Price',
+                data : @chartdata,
+                dataGrouping : {
+                    units : [
+                        [
+                            'week', // unit name
+                            [1] // allowed multiples
+                        ], [
+                            'month',
+                            [1, 2, 3, 4, 6]
+                        ]
+                    ]
+                }
+            }]
+        });
+    });
+});
+</script>
+
+
+
+
+
+</body>
+</html>
