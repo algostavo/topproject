@@ -1,7 +1,3 @@
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/json2/20121008/json2.min.js"></script>
-<script type="application/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-<script type="text/javascript" src="http://developer.oanda.com/oandajs/oanda.js"></script>
-<script type="text/javascript">
 $(function() {
     var setSymbol = ['EUR_USD','GBP_USD','USD_JPY','AUD_USD'];
     var oldBid = null;
@@ -15,10 +11,10 @@ $(function() {
 	var setAuthHeader = function(xhr) {
 	    xhr.setRequestHeader("Authorization", "Bearer " + OANDA.auth.token);
 	};
-	 
-	
+
+
 		// get rate quotes
-	function getCurrentRates() {	
+	function getCurrentRates() {
         OANDA.rate.quote(['EUR_USD'], function(response) {
 		    if(response && !response.error) {
 		           var bid = response.prices[0].bid;
@@ -38,8 +34,8 @@ $(function() {
             $("bid").text(bid);
             $("ask").text(ask);
 		}
-        });		
-	}	
+        });
+	}
 
     //get the symbol list
     //OANDA.rate.instruments(900859, ['pip', 'precision', 'marginRate'], function(listSymbolsResponse) {
@@ -58,4 +54,3 @@ $(function() {
     //});
 
 });
-</script>
