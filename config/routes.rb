@@ -5,8 +5,8 @@ TopSecret::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
    root 'home#index'
-   get 'charts/show' 
-   post 'charts/show' => 'home#index'
+   #get 'index/:chartdata' #=> 'home#index'
+   #post 'charts/show' => 'home#index'
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

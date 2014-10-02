@@ -2,6 +2,7 @@ $(function() {
     var setSymbol = ['EUR_USD','GBP_USD','USD_JPY','AUD_USD'];
     var oldBid = null;
 	var OANDA = {};
+	var accountId = '900859'
 
 	OANDA.baseURL = "https://stream-fxpractice.oanda.com";
 	OANDA.auth = {};
@@ -15,7 +16,7 @@ $(function() {
 
 		// get rate quotes
 	function getCurrentRates() {
-        OANDA.rate.quote(['EUR_USD'], function(response) {
+        OANDA.rate.quote(['setSymbol'], function(response) {
 		    if(response && !response.error) {
 		           var bid = response.prices[0].bid;
 		           var ask = response.prices[0].ask;
@@ -36,21 +37,22 @@ $(function() {
 		}
         });
 	}
+		
+	//get the symbol list
+    OANDA.rate.instruments(accountId, ['pip', 'precision', 'marginRate'], function(listSymbolsResponse) {
+     	var fieldStr = fields.join(',');
+    	var data = fieldStr ? { "['pip', 'precision', 'marginRate']" : fieldStr , "accountId" : accountId} : {};
+    	OANDA.api("/v1/instruments", 'GET', data, listSymbolsResponse);
+        	for(var cur in listSymbolsResponse.instruments) {
+            	var symbolName = listSymbolsResponse.instruments[cur].instrument;
 
-    //get the symbol list
-    //OANDA.rate.instruments(900859, ['pip', 'precision', 'marginRate'], function(listSymbolsResponse) {
-    //	var fieldStr = fields.join(',');
-    //	var data = fieldStr ? { "['pip', 'precision', 'marginRate']" : fieldStr , "900859" : accountId} : {};
-    //	OANDA.api("/v1/instruments", 'GET', data, listSymbolsResponse);
-      //  	for(var cur in listSymbolsResponse.instruments) {
-        //    	var symbolName = listSymbolsResponse.instruments[cur].instrument;
-
-          //  	setSymbol.append("<option value='" + symbolName + "'>" + symbolName + "</option>");
-        	//}
+            	setSymbol.append("<option value='" + symbolName + "'>" + symbolName + "</option>");
+        	}
 
         		//select EUR/USD by default
-        	//	setSymbol.find("[value=EUR_USD]").attr("selected", "selected");
-        	//	setInterval(getCurrentRates, 1000);
-    //});
+        		setSymbol.find("[value=EUR_USD]").attr("selected", "selected");
+        		setInterval(getCurrentRates, 1000);
+    });
+
 
 });

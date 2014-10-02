@@ -1,35 +1,52 @@
-// $(function () {
-//     $.getJSON('http://www.highcharts.com/samples/data/jsonp.php?a=e&filename=aapl-ohlc.json&callback=?', function (data) {
+var chart; // global
 
-//         // create the chart
-//         $('#container').highcharts('StockChart', {
+$(function () {
 
+function requestData() {
+    $.ajax({
+		//type: 'GET'
+		url: '/index/:rateData',
+		success: function(point) {
+			var series = chart.series[0],
+			shift = series.data.length > 20;  // shift if the series is longer than 20
+			
+			//add the point
+			//chart.series[0].addPoint(point, true, shift);
+			
+			// call it again after one day
+			setTimeout(requestData, 86,400,000);
+		},
+		cache: false
+	});
+}
+        
+        
+		
+$(document).ready(function(){
+	chart = new Highcharts.Chart({
+		chart: {
+			renderTo: 'container',
+			defaultSeriesType: 'candlestick',
+			events: {
+				load: requestData
+			}
+		},		
+            rangeSelector : {
+                selected : 1
+            },
 
-//             rangeSelector : {
-//                 inputEnabled: $('#container').width() > 480,
-//                 selected : 1
-//             },
+            title : {
+                text : 'EUR/USD Currency Pair'
+            },
 
-//             title : {
-//                 text : 'AAPL Stock Price'
-//             },
+            series : [{
+                name : 'EUR/USD',
+                data : [],
+                tooltip: {
+                    valueDecimals: 2
+                }
+            }]
+        });
+    });
 
-//             series : [{
-//                 type : 'candlestick',
-//                 name : 'AAPL Stock Price',
-//                 data : @chartdata,
-//                 dataGrouping : {
-//                     units : [
-//                         [
-//                             'week', // unit name
-//                             [1] // allowed multiples
-//                         ], [
-//                             'month',
-//                             [1, 2, 3, 4, 6]
-//                         ]
-//                     ]
-//                 }
-//             }]
-//         });
-//     });
-// });
+});

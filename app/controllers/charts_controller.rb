@@ -1,6 +1,6 @@
 class ChartsController < ApplicationController
 
-  require 'net/http'
+  
 
 
   def show
