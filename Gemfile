@@ -1,7 +1,8 @@
-source 'https://rubygems.org'
+source 'http://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.0'
+
 
 # postgresql
 gem 'pg'
@@ -37,6 +38,14 @@ group :doc do
   gem 'sdoc', require: false
 end
 
+# Net/http 
+#gem 'net/http'
+
+#gem 'eventmachine'
+
+#Rack::SslEnforcer
+gem 'rack-ssl-enforcer'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
@@ -44,11 +53,11 @@ end
  #gem 'puma'
 
  # Use thin as the app server
- gem 'thin'
+ #gem 'thin'
 
  #HighStock Chart 
  #gem 'highstock-rails'
- 
+
 # Use Capistrano for deployment
 # gem 'capistrano', group: :development
 

@@ -5,10 +5,10 @@ $(function () {
 function requestData() {
     $.ajax({
 		//type: 'GET'
-		url: '/index/:rateData',
+		url: 'home/index',
 		success: function(point) {
 			var series = chart.series[0],
-			shift = series.data.length > 20;  // shift if the series is longer than 20
+			shift = series.data.length > 1;  // shift if the series is longer than 20
 			
 			//add the point
 			//chart.series[0].addPoint(point, true, shift);

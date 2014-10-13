@@ -1,6 +1,7 @@
 class HomeController < ApplicationController
   
   require 'net/http'
+  require 'json'
   
   
   def index
@@ -15,17 +16,27 @@ class HomeController < ApplicationController
     alignmentTimezone = 'America%2FNew_York'  # is specified by default
     @rateData = []
 
-    uri = URI.parse(URI.encode(domain + '/v1/candles?instrument=' + instrument + '&candleFormat=bidask' + '&granularity=' + granularity + '&dailyAlignment=' + dailyAlignment))
+    uri = URI.parse(URI.encode(domain + '/v1/candles?instrument=' + instrument + '&count=10' + '&candleFormat=midpoint' + '&granularity=' + granularity + '&dailyAlignment=' + dailyAlignment))
 
     Net::HTTP.start(uri.host, uri.port, :use_ssl => uri.scheme == 'https') do |http|
     	request = Net::HTTP::Get.new uri
     	request['Authorization'] = 'Bearer ' + access_token
     	http.request request do |response|
     		response.read_body do |chunk|
-    			@rateData << chunk
+    		   hash = JSON.parse(chunk)
+               hash.slice(:volume, :complete) 
+               @rateData = hash.values
     		end
     	end
     end
   end
 
 end
+
+
+# hash.slice( )
+# respone.read_body do |chunk|
+# puts chunk => @rateData
+
+
+# hash.delete_if{ |k,v| [:volume, :complete].include? k }

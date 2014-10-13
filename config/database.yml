@@ -8,6 +8,8 @@ development:
   database: top_secret_development
   encoding: unicode
   host: localhost
+  username: postgres
+  password: password
   pool: 5
   timeout: 5000
 
