@@ -60,7 +60,6 @@ GEM
     pg (0.17.1-x86-mingw32)
     polyglot (0.3.5)
     rack (1.5.2)
-    rack-ssl-enforcer (0.2.8)
     rack-test (0.6.2)
       rack (>= 1.0)
     rails (4.0.0)
@@ -125,7 +124,6 @@ DEPENDENCIES
   jquery-rails
   jquery-turbolinks
   pg
-  rack-ssl-enforcer
   rails (= 4.0.0)
   sass-rails (~> 4.0.0)
   sdoc

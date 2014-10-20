@@ -44,7 +44,7 @@ end
 #gem 'eventmachine'
 
 #Rack::SslEnforcer
-gem 'rack-ssl-enforcer'
+#gem 'rack-ssl-enforcer'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

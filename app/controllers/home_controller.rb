@@ -23,9 +23,7 @@ class HomeController < ApplicationController
     	request['Authorization'] = 'Bearer ' + access_token
     	http.request request do |response|
     		response.read_body do |chunk|
-    		   hash = JSON.parse(chunk)
-               hash.slice(:volume, :complete) 
-               @rateData = hash.values
+            @rateData << chunk
     		end
     	end
     end
@@ -33,10 +31,14 @@ class HomeController < ApplicationController
 
 end
 
+  
 
 # hash.slice( )
 # respone.read_body do |chunk|
 # puts chunk => @rateData
-
-
 # hash.delete_if{ |k,v| [:volume, :complete].include? k }
+
+#hash = JSON.parse(chunk)
+#hash.slice("EUR_USD", "D") 
+#@rateData = hash.map {|key, value| value }
+
