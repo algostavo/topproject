@@ -1,8 +1,11 @@
 class HomeController < ApplicationController
+  #respond_to :json, :js 
+
   
   require 'net/http'
   require 'json'
   
+
   
   def index
 
@@ -14,7 +17,9 @@ class HomeController < ApplicationController
     granularity = 'D'
     dailyAlignment = '0' # hour of day 0 - 23 to align candles
     alignmentTimezone = 'America%2FNew_York'  # is specified by default
-    @rateData = []
+    @chartData = []
+    @rateData  = [] 
+
 
     uri = URI.parse(URI.encode(domain + '/v1/candles?instrument=' + instrument + '&count=10' + '&candleFormat=midpoint' + '&granularity=' + granularity + '&dailyAlignment=' + dailyAlignment))
 
@@ -22,23 +27,15 @@ class HomeController < ApplicationController
     	request = Net::HTTP::Get.new uri
     	request['Authorization'] = 'Bearer ' + access_token
     	http.request request do |response|
-    		response.read_body do |chunk|
-            @rateData << chunk
-    		end
-    	end
+    		result = response.read_body
+          data = JSON.parse(result)
+            data['candles'].each do |candle|
+              @chartData << candle.values
+              @rateData  << candle 
+          end
+    	 end
     end
   end
-
 end
 
   
-
-# hash.slice( )
-# respone.read_body do |chunk|
-# puts chunk => @rateData
-# hash.delete_if{ |k,v| [:volume, :complete].include? k }
-
-#hash = JSON.parse(chunk)
-#hash.slice("EUR_USD", "D") 
-#@rateData = hash.map {|key, value| value }
-
