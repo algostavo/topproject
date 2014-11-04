@@ -12,30 +12,34 @@ class HomeController < ApplicationController
     domain = 'https://api-fxpractice.oanda.com'
     access_token = '92eb2d8911829720802dda141031945b-942982d88fae70ac1316cc77d1014b4e'
     instrument = 'EUR_USD'
+    # start =  2014-06-19T15%3A47%3A40Z , if selected no count required
     # count =  default 500 , max 5000
     # candleFormat =  default bidask, or select midpoint
     granularity = 'D'
     dailyAlignment = '0' # hour of day 0 - 23 to align candles
     alignmentTimezone = 'America%2FNew_York'  # is specified by default
     @chartData = []
-    @rateData  = [] 
+    @rateData  = []
+    @rateLow   = []
+    @rateHigh  = []
+    @rateToday = [] 
 
 
-    uri = URI.parse(URI.encode(domain + '/v1/candles?instrument=' + instrument + '&count=10' + '&candleFormat=midpoint' + '&granularity=' + granularity + '&dailyAlignment=' + dailyAlignment))
+    uri = URI.parse(URI.encode(domain + '/v1/candles?instrument=' + instrument + '&start=2014-01-01' + '&candleFormat=midpoint' + '&granularity=' + granularity + '&dailyAlignment=' + dailyAlignment))
 
     Net::HTTP.start(uri.host, uri.port, :use_ssl => uri.scheme == 'https') do |http|
     	request = Net::HTTP::Get.new uri
     	request['Authorization'] = 'Bearer ' + access_token
     	http.request request do |response|
     		result = response.read_body
-          data = JSON.parse(result)
-            data['candles'].each do |candle|
-              @chartData << candle.values
-              @rateData  << candle 
-          end
-    	 end
+          candleGroup = JSON.parse(result)['candles']
+
+              @rateData  = candleGroup
+              @rateToday = candleGroup.last.select {|k,v| ["closeMid"].include?(k)}.collect{|k,v| v}
+              @rateLow   = candleGroup.flat_map(&:to_a).select {|k,v| ["lowMid"].include?(k)}.collect{|k,v| v}.min
+              @rateHigh  = candleGroup.flat_map(&:to_a).select {|k,v| ["highMid"].include?(k)}.collect{|k,v| v}.max
+              @chartData = candleGroup.flat_map(&:to_a).select{|k,v| ["time", "openMid", "highMid", "lowMid", "closeMid"].include?(k)}.collect{|k,v| v}  
+    	end
     end
   end
 end
-
-  

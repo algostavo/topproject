@@ -4,36 +4,12 @@ $(function () {
 
 function requestData() {
     $.ajax({
-		url: 'home/index' ,
+		url:  'home/index' ,
+		data: '@chartData',
 		success: function(data) {
-			//var dataParsed = JSON.parse(newRateData);
-			//var candle = [];
-			//var obj = newRateData;
-			//for(i in obj){
-				//var temp = [];
-				//temp.push("time");
-				//temp.push(obj[i].time);
-				//temp.push("openMid");
-				//temp.push(obj[i].openMid);
-				//temp.push("highMid");
-				//temp.push(obj[i].highMid);
-				//temp.push("lowMid");
-				//temp.push(obj[i].lowMid);
-				//temp.push("closeMid");
-				//temp.push(obj[i].closeMid);
-				//candle.push(temp);
-			//}
-
-			//return candle;
-
 			//var seriesData = [];
-			//for (var i = 0; i < data.length; i++) {
-				//var candletring = data[i].x;
-				 //var x = candletring.remove(/ /);
-			//}
-			
 			//var series = chart.series[0],
-			//shift = series.data.length > 1;  // shift if the series is longer than 20
+			shift = series.data.length > 1;  // shift if the series is longer than 20
 			
 			//console.log(candle)
 			//add the point
