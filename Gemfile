@@ -8,6 +8,9 @@ gem 'rails', '4.0.0'
 gem 'pg'
 
 
+# rufus-scheduler
+gem 'rufus-scheduler', '~> 3.0.9'
+
 # streaming json parser
 #gem 'yajl-ruby', require: 'yajl'
 
@@ -37,14 +40,6 @@ group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
 end
-
-# Net/http 
-#gem 'net/http'
-
-#gem 'eventmachine'
-
-#Rack::SslEnforcer
-#gem 'rack-ssl-enforcer'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
