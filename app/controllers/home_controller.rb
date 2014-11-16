@@ -4,6 +4,8 @@ require 'net/http'
 require 'json'
 require 'rufus-scheduler'
 
+# t = Time.zone.now
+# begin = t.beginning_of_year
 
 
   

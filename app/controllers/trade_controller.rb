@@ -82,9 +82,9 @@ require 'rufus-scheduler'
 			request['Authorization'] = 'Bearer ' + access_token
 			http.request request do |response|
 	          result = response.read_body
-	          	tradeGroup = JSON.parse(result)['transactions']
+	          	tradeGroupHistory = JSON.parse(result)['transactions']
 
-	          		@tradeDataHistory = tradeGroup.flat_map(&:to_a).select{ |k,v| ["id", "time", "type" "instrument", "side", "price", "takeProfitPrice", "stopLossPrice", "pl", "interest", "accountBalance"].include?(k)}
+	          		@tradeDataHistory = tradeGroupHistory.flat_map(&:to_a).select{ |k,v| ["id", "time", "type" "instrument", "side", "price", "takeProfitPrice", "stopLossPrice", "pl", "interest"].include?(k)}
 	      		end	
 	    	end
 	 	end

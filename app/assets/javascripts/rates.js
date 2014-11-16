@@ -4,7 +4,7 @@ $(function() {
 	var OANDA = {};
 	var accountId = '900859'
 
-	OANDA.baseURL =  "https://api-fxpractice.oanda.com";
+	OANDA.baseURL =  "https://stream-fxpractice.oanda.com";
 	OANDA.auth =  {};
 	OANDA.auth.enabled =  true;
 	OANDA.auth.token =  "92eb2d8911829720802dda141031945b-942982d88fae70ac1316cc77d1014b4e";
@@ -60,7 +60,7 @@ OANDA.api = function(endpoint, method, parameters, callback) {
 
 		// get rate quotes
 	function getCurrentRates() {
-        OANDA.rate.quote(['EUR_USD'], function(response) {
+        OANDA.rate.quote(['EUR_USD', 'GBP_USD', 'USD_JPY', 'AUD_USD' ], function(response) {
 		    if(response && !response.error) {
 		           var bid = response.prices[0].bid;
 		           var ask = response.prices[0].ask;
