@@ -4,9 +4,6 @@ require 'net/http'
 require 'json'
 require 'rufus-scheduler'
 
-# t = Time.zone.now
-# begin = t.beginning_of_year
-
 
   
   def index
@@ -17,6 +14,8 @@ require 'rufus-scheduler'
     domain = 'https://api-fxpractice.oanda.com'
     instrument = 'EUR_USD'    
     access_token = '92eb2d8911829720802dda141031945b-942982d88fae70ac1316cc77d1014b4e'
+    # t = Time.zone.now
+    # first = t.beginning_of_year.strftime('%Y-%m-%dT%H:%M:%S.%fZ')   assign variable for after start = 
     # start =  2014-06-19T15%3A47%3A40Z , if selected no count required
     # count =  default 500 , max 5000
     # candleFormat =  default bidask, or select midpoint
@@ -41,13 +40,13 @@ require 'rufus-scheduler'
     		result = response.read_body
           candleGroup = JSON.parse(result)['candles']
 
-              @rateData   = candleGroup
+              @chartData  = response.read_body
               @rateTodayH = candleGroup.last.select {|k,v| ["highMid"].include?(k)}.collect{|k,v| v}
               @rateTodayO = candleGroup.last.select {|k,v| ["openMid"].include?(k)}.collect{|k,v| v}
               @rateTodayC = candleGroup.last.select {|k,v| ["closeMid"].include?(k)}.collect{|k,v| v}
               @rateLow    = candleGroup.flat_map(&:to_a).select {|k,v| ["lowMid"].include?(k)}.collect{|k,v| v}.min
               @rateHigh   = candleGroup.flat_map(&:to_a).select {|k,v| ["highMid"].include?(k)}.collect{|k,v| v}.max
-              @chartData  = candleGroup.flat_map(&:to_a).select{|k,v| ["time", "openMid", "highMid", "lowMid", "closeMid"].include?(k)}.collect{|k,v| v}     
+              @rateData   = candleGroup.flat_map(&:to_a).select{|k,v| ["time", "openMid", "highMid", "lowMid", "closeMid"].include?(k)}.collect{|k,v| v}     
         end      
     	end
     end
