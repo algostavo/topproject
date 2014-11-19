@@ -15,8 +15,23 @@ module TopSecret
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
-    # -- all .rb files in that directory are automatically loaded.
-    #config.middleware.use Rack::SslEnforcer, :only => '/assets/chartdata.js'
+   
+    #config.force_ssl = true
+
+     config.middleware.insert_before 0, "Rack::Cors" do
+      allow do
+        origins '*'
+        resource '*', :headers => :any, :methods => [:get, :post, :options]
+      end
+    end
+
+   #config.action_dispatch.default_headers = {
+    #'Access-Control-Allow-Origin' => 'http://developer.oanda.com/oandajs/oanda.js',
+    #'Access-Control-Request-Method' => %w{GET POST OPTIONS}.join(",")
+  #}
+   #config.force_ssl = true
+   # -- all .rb files in that directory are automatically loaded.
+    #config.middleware.use Rack::SslEnforcer, :only => '/assets/rates.js'
     # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
     # Run "rake -D time" for a list of tasks for finding time zone names. Default is UTC.
     # config.time_zone = 'Central Time (US & Canada)'

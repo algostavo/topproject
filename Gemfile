@@ -50,6 +50,12 @@ end
  # Use thin as the app server
  #gem 'thin'
 
+# Rack Middleware for handling Cross-Origin Resource Sharing (CORS)
+gem 'rack-cors', :require => 'rack/cors' 
+
+ # Rack::SslEnforcer a Rack middleware to enforece ssl connections
+ #gem 'rack-ssl-enforcer'
+
  #HighStock Chart 
  #gem 'highstock-rails'
 
@@ -65,3 +71,5 @@ end
 # For Rails 4 Logging with rails_12factor
 # gem 'rails_stdout_logging'
 
+# Rack-Ssl-Enforcer on Rails app on Heroku
+# gem 'heroku-rack-ss;-enforcer-rails'
