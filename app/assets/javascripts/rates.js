@@ -1,9 +1,9 @@
 $(function() {
-    //var setSymbol = 'EUR_USD','GBP_USD','USD_JPY','AUD_USD';
+
     var oldBid = null;
 	var OANDA = {};
 	var accountId = '900859'
-
+    var symbols = ['EUR_USD', 'GBP_USD', 'USD_JPY', 'AUD_USD' ]
 	OANDA.baseURL =  "https://stream-fxpractice.oanda.com";
 	OANDA.auth =  {};
 	OANDA.auth.enabled =  true;
@@ -16,7 +16,7 @@ $(function() {
 
 var sendAjaxRequest = function(endpoint, method, parameters, requiresAuth, onComplete) {
     var contentType = "";
-    if(method === 'POST' || method === 'PUT' || method === 'PATCH') {
+    if(method === 'POST' || method === 'PUT' || method === 'GET') {
         contentType = "application/x-www-form-urlencoded";
     }
     var beforeSend = function() {};
@@ -60,7 +60,8 @@ OANDA.api = function(endpoint, method, parameters, callback) {
 
 		// get rate quotes
 	function getCurrentRates() {
-        OANDA.rate.quote(['EUR_USD', 'GBP_USD', 'USD_JPY', 'AUD_USD' ], function(response) {
+        OANDA.rate.quote(symbols, function(response) {
+            OANDA.api("/v1/prices", 'GET', {instruments: symbols.join(',')}, callback);
 		    if(response && !response.error) {
 		           var bid = response.prices[0].bid;
 		           var ask = response.prices[0].ask;

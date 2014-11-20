@@ -4,7 +4,6 @@ require 'net/http'
 require 'json'
 require 'rufus-scheduler'
 
-
   
   def index
     scheduler = Rufus::Scheduler.new
@@ -29,7 +28,7 @@ require 'rufus-scheduler'
     @rateTodayH = []
     @rateTodayO = []
     @rateTodayC = [] 
-
+  
 
     uri = URI.parse(URI.encode(domain + '/v1/candles?instrument=' + instrument + '&start=2014-01-01' + '&candleFormat=midpoint' + '&granularity=' + granularity + '&dailyAlignment=' + dailyAlignment))
 

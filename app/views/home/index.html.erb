@@ -5,13 +5,13 @@
     
     <script type="text/javascript" src="http://developer.oanda.com/oandajs/oanda.js"></script>
 
-    <%#<script type="text/javascript" src="/assets/canvasjs.min.js"></script>%>
+    <script type="text/javascript" src="/assets/canvasjs.min.js"></script>
 
-    <script src="http://github.highcharts.com/master/highstock.src.js"></script>
-    <script src="http://github.highcharts.com/modules/exporting.js"></script>  
+   <%# <script src="http://github.highcharts.com/master/highstock.src.js"></script>
+    <script src="http://github.highcharts.com/modules/exporting.js"></script> %> 
 </head>
 
-<center><h2>f 2 x</h2></center>
+<center><h2>f to x</h2></center>
 
 <table width='110%' style='border: 1px;'>
 <div id='quote-panel'>
@@ -35,7 +35,7 @@
 
 <br>
 
-<div id="container" style="height: 400px; min-width: 600px"></div>
+<div id="chartContainer" style="height: 400px; min-width: 600px"></div>
  
 <%= render 'shared/tradeListInfo', locals: {tradeData: @tradeData, tradeDataHistory: @tradeDataHistory} %>
 
