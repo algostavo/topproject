@@ -66,7 +66,7 @@ gem 'rack-cors', :require => 'rack/cors'
 # gem 'debugger', group: [:development, :test]
 #----------------------------------------------
 # ** Deployment for Heroku ** 
-#gem 'rails_12factor', group: :production
+gem 'rails_12factor', group: :production
 
 # For Rails 4 Logging with rails_12factor
 # gem 'rails_stdout_logging'
