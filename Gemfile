@@ -1,7 +1,8 @@
 source 'http://rubygems.org'
-
+ruby '2.0.0'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.0'
+
 
 
 # postgresql
@@ -48,7 +49,7 @@ end
  #gem 'puma'
 
  # Use thin as the app server
- #gem 'thin'
+gem 'thin'
 
 # Rack Middleware for handling Cross-Origin Resource Sharing (CORS)
 gem 'rack-cors', :require => 'rack/cors' 

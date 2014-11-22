@@ -8,7 +8,12 @@
     <script type="text/javascript" src="/assets/canvasjs.min.js"></script>
 
    <%# <script src="http://github.highcharts.com/master/highstock.src.js"></script>
-    <script src="http://github.highcharts.com/modules/exporting.js"></script> %> 
+    <script src="http://github.highcharts.com/modules/exporting.js"></script>
+
+locals: {tradeData: @tradeData, tradeDataHistory:
+
+:partial => 'shared/tradeListInfo',  :object =>     
+     %> 
 </head>
 
 <center><h2>f to x</h2></center>
@@ -37,7 +42,7 @@
 
 <div id="chartContainer" style="height: 400px; min-width: 600px"></div>
  
-<%= render 'shared/tradeListInfo', locals: {tradeData: @tradeData, tradeDataHistory: @tradeDataHistory} %>
+<%= render :partial => 'shared/tradeListInfo',  :object => @tradeDataHistory %>
 
 
 <body>
@@ -52,3 +57,4 @@ This automated process is believed to be the best methodolgy for trading and inv
 The site is for educational purposes only with no investment advice given.
 </h4>
 </body>
+
