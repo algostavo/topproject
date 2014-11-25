@@ -52,7 +52,7 @@ end
 gem 'thin'
 
 # Rack Middleware for handling Cross-Origin Resource Sharing (CORS)
-gem 'rack-cors', :require => 'rack/cors' 
+#gem 'rack-cors', :require => 'rack/cors' 
 
  # Rack::SslEnforcer a Rack middleware to enforece ssl connections
  #gem 'rack-ssl-enforcer'
