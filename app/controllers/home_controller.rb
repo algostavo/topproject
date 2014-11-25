@@ -46,6 +46,7 @@ require 'rufus-scheduler'
               @rateLow    = candleGroup.flat_map(&:to_a).select {|k,v| ["lowMid"].include?(k)}.collect{|k,v| v}.min
               @rateHigh   = candleGroup.flat_map(&:to_a).select {|k,v| ["highMid"].include?(k)}.collect{|k,v| v}.max
               @rateData   = candleGroup.flat_map(&:to_a).select{|k,v| ["time", "openMid", "highMid", "lowMid", "closeMid"].include?(k)}.collect{|k,v| v}     
+
         end      
     	end
     end

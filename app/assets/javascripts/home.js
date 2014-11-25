@@ -1,16 +1,18 @@
 window.onload = function () {
 
-function requestData() {
-    $.ajax({
-    url: 'index/chartData',
-    success: function(data)
-    newChart(data)
-        // call it again after one day
-        //setInterval(requestData, 86400000);
-       },
-       cache: false
-    });
+var newDataPoints = [];
+
+function newChart(data){
+
+    // var newDataPoints = [];
+    data.forEach(function(point) {
+        newDataPoints.push({
+            x: new Date(point.substr(0,10)),
+            y: [point.open, point.high, point.low, point.close]
+        })
+    })
 }
+
 
 var chart = new CanvasJS.Chart("chartContainer",
 {
@@ -40,48 +42,17 @@ var chart = new CanvasJS.Chart("chartContainer",
 chart.render();
 }
 
-function newChart(data){
+function requestData() {
+$.ajax({
+    url: 'index/:chartData',  
+    success: function(data) {
+        newChart(data);
+        console.log(data);        
 
-    var newDataPoints = [];
-    data.forEach(function(point) {
-        newDataPoints.push({
-            x: new Date(point.substr(0,10)),
-            y: [point.open, point.high, point.low, point.close]
-        })
-    })
+        // call it again after one day
+        setInterval(requestData, 86400000);
+       },
+       cache: false
+    });
 }
 
-
-
-
-
-//var limit = 1000;    //increase number of dataPoints by increasing this
-  //  var y = 0;    
-  //  var dataPoints = [];    
-  //  var formatedDate = date.format("yyyy,mm,dd");
-  //  var data = []; var dataSeries = { type: "candlestick" };
-  //  obj = JSON && JSON.parse('@chartData') || $.parseJSON('@chartData');
-  //  for (var value in obj) {
-    //    y = Date.parse.formatedDate;
-    //     dataPoints.push({
-    //      x: (obj[value]),
-    //      y: y                
-    //       });
-    //    }
-  //   dataSeries.dataPoints = dataPoints;
-  //   data.push(dataSeries); 
-
-
-
-    // var y = 0;
-    // var data = []; var dataSeries = { type: "candlestick" };
-    // var dataPoints = [];
-    // for (var i = 0; i < limit; i += 1) {
-    //   y += (Math.random() * 10 - 5);
-      //  dataPoints.push({
-        // x: i - limit / 2,
-          // y: y                
-         //  });
-      //  }
-    // dataSeries.dataPoints = dataPoints;
-    // data.push(dataSeries);               

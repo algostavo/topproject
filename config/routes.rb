@@ -1,7 +1,7 @@
 TopSecret::Application.routes.draw do
   get 'home/index'
 
-  #get '/assets/rates.js'
+  get 'index/chartData'
 
   root 'home#index'
   # The priority is based upon order of creation: first created -> highest priority.
