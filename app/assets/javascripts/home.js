@@ -1,14 +1,14 @@
 window.onload = function () {
 
-var newDataPoints = [];
+var dataPoints = [];
 
 function newChart(data){
 
     // var newDataPoints = [];
     data.forEach(function(point) {
-        newDataPoints.push({
+        dataPoints.push({
             x: new Date(point.substr(0,10)),
-            y: [point.open, point.high, point.low, point.close]
+            y: [point.openMid, point.highMid, point.lowMid, point.closeMid]
         })
     })
 }
@@ -17,7 +17,7 @@ function newChart(data){
 var chart = new CanvasJS.Chart("chartContainer",
 {
     title:{
-        text: "EUR/USD for 2014",
+        text: "EUR_USD for 2014",
     },
     exportEnabled: true,
     axisY: {
@@ -35,7 +35,7 @@ var chart = new CanvasJS.Chart("chartContainer",
     data: [ //data
     {
         type: "candlestick",
-        dataPoints: newDataPoints
+        dataPoints: dataPoints
     }
     ]
 });
@@ -44,10 +44,12 @@ chart.render();
 
 function requestData() {
 $.ajax({
-    url: 'index/:chartData',  
-    success: function(data) {
+    url: 'home/index/chartData',   //'<%=@chartData%> '
+    dataType: 'json',
+    success: function(data){
+        console.log(data);          
         newChart(data);
-        console.log(data);        
+      
 
         // call it again after one day
         setInterval(requestData, 86400000);

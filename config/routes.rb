@@ -3,6 +3,8 @@ TopSecret::Application.routes.draw do
 
   get 'index/chartData'
 
+  get 'home/index/chartData'
+
   root 'home#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
