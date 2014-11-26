@@ -6,9 +6,9 @@ require 'rufus-scheduler'
 
   
   def index
-    scheduler = Rufus::Scheduler.new
+    #scheduler = Rufus::Scheduler.new
 
-    scheduler.cron '0 */4 * * Mon-Fri' do 
+    #scheduler.cron '0 */4 * * Mon-Fri' do 
 
     domain = 'https://api-fxpractice.oanda.com'
     instrument = 'EUR_USD'    
@@ -47,7 +47,7 @@ require 'rufus-scheduler'
               @rateHigh   = candleGroup.flat_map(&:to_a).select {|k,v| ["highMid"].include?(k)}.collect{|k,v| v}.max
               @rateData   = candleGroup.flat_map(&:to_a).select{|k,v| ["time", "openMid", "highMid", "lowMid", "closeMid"].include?(k)}.collect{|k,v| v}     
 
-        end      
+        #end      
     	end
     end
   end

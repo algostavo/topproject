@@ -1,16 +1,28 @@
-window.onload = function () {
-
 var dataPoints = [];
 
-function newChart(data){
+window.onload = function () {
 
-    // var newDataPoints = [];
+function newChart(data){
     data.forEach(function(point) {
         dataPoints.push({
             x: new Date(point.substr(0,10)),
             y: [point.openMid, point.highMid, point.lowMid, point.closeMid]
         })
     })
+}
+
+function requestData() {
+$.ajax({
+    url: '<%= @chartData %>',      
+    //dataType: 'json',
+    success: function(data){   
+        console.log(data);           
+        newChart(data);
+        // call it again after one day
+        setInterval(requestData, 86400000);
+       },
+       cache: false
+    });
 }
 
 
@@ -40,21 +52,5 @@ var chart = new CanvasJS.Chart("chartContainer",
     ]
 });
 chart.render();
-}
-
-function requestData() {
-$.ajax({
-    url: 'home/index/chartData',   //'<%=@chartData%> '
-    dataType: 'json',
-    success: function(data){
-        console.log(data);          
-        newChart(data);
-      
-
-        // call it again after one day
-        setInterval(requestData, 86400000);
-       },
-       cache: false
-    });
 }
 

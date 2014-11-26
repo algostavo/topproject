@@ -1,9 +1,9 @@
 <head>
 
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/json2/20121008/json2.min.js"></script>
-    <script type="application/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script type="application/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     
-    <script type="text/javascript" src="http://developer.oanda.com/oandajs/oanda.js"></script>
+    <script type="text/javascript" src="//developer.oanda.com/oandajs/oanda.js"></script>
 
     <script type="text/javascript" src="/assets/canvasjs.min.js"></script>
 
@@ -42,7 +42,7 @@ locals: {tradeData: @tradeData, tradeDataHistory:
 
 <div id="chartContainer" style="height: 400px; min-width: 600px"></div>
  
-<%= render :partial => 'shared/tradeListInfo',  :object => @tradeDataHistory %>
+<%= render :partial => 'shared/tradeListInfo',  :object => {:tradeDataHistory => @tradeDataHistory, :tradeData => @tradeData} %>
 
 
 <body>
