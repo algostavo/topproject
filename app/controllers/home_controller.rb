@@ -39,7 +39,6 @@ require 'rufus-scheduler'
     		result = response.read_body
           candleGroup = JSON.parse(result)['candles']
 
-              @chartData  = response.read_body
               @rateTodayH = candleGroup.last.select {|k,v| ["highMid"].include?(k)}.collect{|k,v| v}
               @rateTodayO = candleGroup.last.select {|k,v| ["openMid"].include?(k)}.collect{|k,v| v}
               @rateTodayC = candleGroup.last.select {|k,v| ["closeMid"].include?(k)}.collect{|k,v| v}
@@ -47,6 +46,10 @@ require 'rufus-scheduler'
               @rateHigh   = candleGroup.flat_map(&:to_a).select {|k,v| ["highMid"].include?(k)}.collect{|k,v| v}.max
               @rateData   = candleGroup.flat_map(&:to_a).select{|k,v| ["time", "openMid", "highMid", "lowMid", "closeMid"].include?(k)}.collect{|k,v| v}     
 
+          data = JSON.parse(result)   
+            data['candles'].each do |candle|
+              @chartData  = [candle] 
+          end
         #end      
     	end
     end

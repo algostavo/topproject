@@ -13,7 +13,8 @@ function newChart(data){
 
 function requestData() {
 $.ajax({
-    url: '<%= @chartData %>',      
+    url: 'home/index',
+    data: '<%= @chartData %>',      
     //dataType: 'json',
     success: function(data){   
         console.log(data);           

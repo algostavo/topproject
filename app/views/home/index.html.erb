@@ -25,15 +25,16 @@ locals: {tradeData: @tradeData, tradeDataHistory:
     <th><label for='EUR_USD'>EUR_USD</label></th>
     <th><label for='GBP_USD'>GBP_USD</label></th>
     <th><label for='USD_JPY'>USD_JPY</label></th>
-    <th><label for='AUD_USD'>AUD_USD</label></th>
+    <th><label for='USD_CHF'>USD_CHF</label></th>
     </tr>
     <tr>
-        <td>BID:</td>           <td>BID:</td>           <td>BID:</td>           <td>BID:</td>
-        <td id="bid"></td>      <td id="bid"></td>      <td id="bid"></td>      <td id="bid"></td>
+        <td><center><H1>&euro;</H1></center></td>       <td><center><H1>&pound;</H1></center></td>      <td><center><H1>&yen;</H1></center></td>        <td><center><H1>Fr</H1></center></td>
+        <%#<td>BID:</td>           <td>BID:</td>           <td>BID:</td>           <td>BID:</td>
+        <td id="bid"></td>      <td id="bid"></td>      <td id="bid"></td>      <td id="bid"></td>%>
     </tr>
     <tr>
-        <td>ASK:</td>           <td>ASK:</td>           <td>ASK:</td>           <td>ASK:</td>
-        <td id="ask"></td>      <td id="ask"></td>      <td id="ask"></td>      <td id="ask"></td>
+        <%#<td>ASK:</td>           <td>ASK:</td>           <td>ASK:</td>           <td>ASK:</td>
+        <td id="ask"></td>      <td id="ask"></td>      <td id="ask"></td>      <td id="ask"></td>%>
     </tr>
 </div>
 </table>
@@ -47,8 +48,7 @@ locals: {tradeData: @tradeData, tradeDataHistory:
 
 <body>
 <h4>
-This web application is purpose-built to showcase the highly liquid foreign exchange market 
-with live streaming data being displayed across the top of the page.
+This web application is purpose-built to showcase the highly liquid foreign exchange market. 
 The chart at the center is of the Euro/US dollar currency pair, with a daily time frame and a starting date beginning at the current year. 
 In addition to the chart, execution of trades in real-time using a
 custom algorithmic trading system are displayed below the chart to the left, 
