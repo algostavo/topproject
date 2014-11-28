@@ -5,7 +5,7 @@ window.onload = function () {
 function newChart(data){
     data.forEach(function(point) {
         dataPoints.push({
-            x: new Date(point.substr(0,10)),
+            x: new Date(point.substr(0,10).replace(/-/g, ',')),
             y: [point.openMid, point.highMid, point.lowMid, point.closeMid]
         })
     })
@@ -55,3 +55,5 @@ var chart = new CanvasJS.Chart("chartContainer",
 chart.render();
 }
 
+
+//str.replace(/-/g , ',')
