@@ -16,7 +16,7 @@ locals: {tradeData: @tradeData, tradeDataHistory:
      %> 
 </head>
 
-<center><h2>F to X</h2></center>
+<center><H1>&fnof; &nbsp; to &nbsp; &chi;</H1></center>
 
 <table width='110%' style='border: 1px;'>
 <div id='quote-panel'>
@@ -43,7 +43,7 @@ locals: {tradeData: @tradeData, tradeDataHistory:
 
 <div id="chartContainer" style="height: 400px; min-width: 600px"></div>
  
-<%= render :partial => 'shared/tradeListInfo',  :object => {:tradeDataHistory => @tradeDataHistory, :tradeData => @tradeData} %>
+<%= render :partial => 'shared/tradeListInfo',  :locals => {:tradeDataHistory => @tradeDataHistory} %>
 
 
 <body>

@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>F to X</title>
+  <title>&fnof; to &chi;</title>
 
   <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/json2/20121008/json2.min.js"></script> 
   <script type="application/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
   <script type="text/javascript" src="//developer.oanda.com/oandajs/oanda.js"></script> 
 
-
+  <%= csrf_meta_tags %>
   <%= stylesheet_link_tag    "application", params[:controller], media: "all" %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application",	params[:controller] %>
-  <%= csrf_meta_tags %>
+  <%= javascript_include_tag params[:controller] %>
+  <%= include_gon %>
 </head>
 <body>
 

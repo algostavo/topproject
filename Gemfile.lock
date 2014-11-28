@@ -36,8 +36,14 @@ GEM
     coffee-script-source (1.8.0)
     daemons (1.1.9)
     erubis (2.7.0)
+    eventmachine (1.0.3)
     eventmachine (1.0.3-x86-mingw32)
     execjs (2.2.1)
+    gon (5.2.3)
+      actionpack (>= 2.3.0)
+      json
+      multi_json
+      request_store (>= 1.0.5)
     hike (1.2.3)
     i18n (0.6.11)
     jbuilder (1.5.3)
@@ -87,6 +93,7 @@ GEM
     rdoc (4.1.1)
       json (~> 1.4)
     ref (1.0.5)
+    request_store (1.1.0)
     rufus-scheduler (3.0.9)
       tzinfo
     sass (3.2.19)
@@ -134,6 +141,7 @@ PLATFORMS
 
 DEPENDENCIES
   coffee-rails (~> 4.0.0)
+  gon
   jbuilder (~> 1.2)
   jquery-rails
   jquery-turbolinks

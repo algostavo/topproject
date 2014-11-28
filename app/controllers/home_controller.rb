@@ -49,6 +49,7 @@ require 'rufus-scheduler'
           data = JSON.parse(result)   
             data['candles'].each do |candle|
               @chartData  = [candle] 
+              gon.chartData = @chartData
           end
         #end      
     	end

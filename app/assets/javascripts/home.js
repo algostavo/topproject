@@ -13,8 +13,8 @@ function newChart(data){
 
 function requestData() {
 $.ajax({
-    url: 'home/index',
-    data: '<%= @chartData %>',      
+    url: 'gon.chartData',//'home/index',
+    //data: '<%= @chartData %>',      
     //dataType: 'json',
     success: function(data){   
         console.log(data);           

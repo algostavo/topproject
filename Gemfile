@@ -57,6 +57,9 @@ gem 'rack-cors', :require => 'rack/cors'
  # Rack::SslEnforcer a Rack middleware to enforece ssl connections
  #gem 'rack-ssl-enforcer'
 
+# Gon for rails variables to JS
+gem 'gon'
+
  #HighStock Chart 
  #gem 'highstock-rails'
 
