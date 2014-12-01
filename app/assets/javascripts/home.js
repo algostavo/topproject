@@ -1,21 +1,13 @@
-var dataPoints = [];
 
 window.onload = function () {
-
-function newChart(data){
-    data.forEach(function(point) {
-        dataPoints.push({
-            x: new Date(point.substr(0,10).replace(/-/g, ',')),
-            y: [point.openMid, point.highMid, point.lowMid, point.closeMid]
-        })
-    })
-}
+var dataPoints = []; 
 
 function requestData() {
 $.ajax({
-    url: 'gon.chartData',//'home/index',
-    //data: '<%= @chartData %>',      
-    //dataType: 'json',
+    url: 'home/index/gon.chartData',
+    data: {},    
+    type: 'GET',  
+    dataType: 'json',
     success: function(data){   
         console.log(data);           
         newChart(data);
@@ -26,11 +18,19 @@ $.ajax({
     });
 }
 
+function newChart(data){       
+    data.forEach(function(point) {
+        dataPoints.push({
+            x: new Date(point.substr(0,10).replace(/-/g, ',')),
+            y: [point.openMid.value, point.highMid.value, point.lowMid.value, point.closeMid.value]
+        })
+    })
+}
 
 var chart = new CanvasJS.Chart("chartContainer",
 {
     title:{
-        text: "EUR_USD for 2014",
+        text: "EUR_USD 2014",
     },
     exportEnabled: true,
     axisY: {
@@ -40,7 +40,7 @@ var chart = new CanvasJS.Chart("chartContainer",
     },     
     axisX: {
         interval:1,
-        valueFormatString: "MMM-DD",
+        valueFormatString: "YYYY-MM-DD",
     },
     toolTip: {
         content: "Date:{x}</br><strong>Prices:</strong></br>Open:{y[0]}, Close:{y[3]}</br>High:{y[1]},Low:{y[2]}",
@@ -54,6 +54,9 @@ var chart = new CanvasJS.Chart("chartContainer",
 });
 chart.render();
 }
+
+
+
 
 
 //str.replace(/-/g , ',')

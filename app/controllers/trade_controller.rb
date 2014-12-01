@@ -47,6 +47,7 @@ require 'rufus-scheduler'
 	          	tradeGroup = JSON.parse(result)['trades']
 
 	          		@tradeData = tradeGroup.flat_map(&:to_a).select{ |k,v| ["time", "instrument", "side", "price", "takeProfit", "stopLoss"].include?(k)}
+	          			#render "view", :tradeData => @tradeData
       			end	
     		end
  		end
@@ -85,6 +86,7 @@ require 'rufus-scheduler'
 	          	tradeGroupHistory = JSON.parse(result)['transactions']
 
 	          		@tradeDataHistory = tradeGroupHistory.flat_map(&:to_a).select{ |k,v| ["id", "time", "type" "instrument", "side", "price", "takeProfitPrice", "stopLossPrice", "pl", "interest"].include?(k)}
+	          			#render "view", :tradeDataHistory => @tradeDataHistory
 	      		end	
 	    	end
 	 	end

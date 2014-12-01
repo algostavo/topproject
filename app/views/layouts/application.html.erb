@@ -7,11 +7,11 @@
   <script type="application/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
   <script type="text/javascript" src="//developer.oanda.com/oandajs/oanda.js"></script> 
 
-  <%= csrf_meta_tags %>
+  <%= include_gon %>  
+  <%= javascript_include_tag params[:controller] %>  
   <%= stylesheet_link_tag    "application", params[:controller], media: "all" %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag params[:controller] %>
-  <%= include_gon %>
+  <%= csrf_meta_tags %>
 </head>
 <body>
 
