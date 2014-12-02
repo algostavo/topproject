@@ -1,21 +1,18 @@
-#namespace :rufus do
 desc "This is to schedule controllers"
 	
-	task :index do
-		home_controller.index
+	task (:index => :environment ) do
+		home_controller.new.index
 	end
 
-	task :execute do
-		trade_controller.execute
+	task (:execute => :environment) do
+		trade_controller.new.execute
 	end
 
-	task :openTrades do
-		trade_controller.openTrades
+	task (:openTrades => :environment) do
+		trade_controller.new.openTrades
 	end
 
-	task :tradeHistory do
-		trade_controller.tradeHistory
+	task (:tradeHistory => :environment) do
+		trade_controller.new.tradeHistory
 	end
 
-
-#end
