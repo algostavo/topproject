@@ -1,3 +1,3 @@
 
 web: bundle exec thin start -p $PORT
-worker: bundle exec rufus-scheduler initializers/task_scheduler.rb
+worker: bundle exec rake initializers/task_scheduler.rb
