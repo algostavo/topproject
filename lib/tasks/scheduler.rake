@@ -1,21 +1,21 @@
 desc "This is to schedule controllers"
 	
-	task :index do
+	task :index => :environment do
 		objHome = HomeController.new
 		objHome.index
 	end
 
-	task :execute do
+	task :execute => :environment do
 		objTrade = TradeController.new
 		objTrade.execute
 	end
 
-	task :openTrades do
+	task :openTrades => :environment do
 		objTrade = TradeController.new
 		objTrade.openTrades
 	end
 
-	task :tradeHistory do
+	task :tradeHistory => :environment do
 		objTrade = TradeController.new
 		objTrade.tradeHistory
 	end
