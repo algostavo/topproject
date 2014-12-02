@@ -46,7 +46,6 @@ require 'json'
             data['candles'].each do |candle|
               @chartData  = [candle] 
               gon.chartData = @chartData
-          end
         end      
     	end
     end

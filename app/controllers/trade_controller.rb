@@ -45,7 +45,6 @@ require 'rufus-scheduler'
 
 	          		@tradeData = tradeGroup.flat_map(&:to_a).select{ |k,v| ["time", "instrument", "side", "price", "takeProfit", "stopLoss"].include?(k)}
 	          			#render "view", :tradeData => @tradeData
-      			end	
     		end
  		end
 	end
@@ -81,7 +80,6 @@ require 'rufus-scheduler'
 
 	          		@tradeDataHistory = tradeGroupHistory.flat_map(&:to_a).select{ |k,v| ["id", "time", "type" "instrument", "side", "price", "takeProfitPrice", "stopLossPrice", "pl", "interest"].include?(k)}
 	          			#render "view", :tradeDataHistory => @tradeDataHistory
-	      		end	
 	    	end
 	 	end
 	end		
