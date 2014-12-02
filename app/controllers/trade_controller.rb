@@ -18,9 +18,6 @@ require 'rufus-scheduler'
 
 
 	def openTrades
-		scheduler = Rufus::Scheduler.new
-
-	    scheduler.cron '2 */4 * * Mon-Fri' do
 
 		domain = 'https://api-fxpractice.oanda.com'
 	    accountId = '900859'
@@ -55,9 +52,6 @@ require 'rufus-scheduler'
 
 
 	def tradeHistory
-		scheduler = Rufus::Scheduler.new
-
-	    scheduler.cron '3 */4 * * Mon-Fri' do
 
 		domain = 'https://api-fxpractice.oanda.com'
 	    accountId = '900859'

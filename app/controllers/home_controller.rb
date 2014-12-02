@@ -2,13 +2,9 @@ class HomeController < ApplicationController
 
 require 'net/http'
 require 'json'
-require 'rufus-scheduler'
 
   
   def index
-    #scheduler = Rufus::Scheduler.new
-
-    #scheduler.cron '0 */4 * * Mon-Fri' do 
 
     domain = 'https://api-fxpractice.oanda.com'
     instrument = 'EUR_USD'    
@@ -51,7 +47,7 @@ require 'rufus-scheduler'
               @chartData  = [candle] 
               gon.chartData = @chartData
           end
-        #end      
+        end      
     	end
     end
   end
