@@ -1,18 +1,18 @@
 desc "This is to schedule controllers"
 	
-	task (:index => :environment ) do
+	task :index do
 		home_controller.new.index
 	end
 
-	task (:execute => :environment) do
+	task :execute do
 		trade_controller.new.execute
 	end
 
-	task (:openTrades => :environment) do
+	task :openTrades do
 		trade_controller.new.openTrades
 	end
 
-	task (:tradeHistory => :environment) do
+	task :tradeHistory do
 		trade_controller.new.tradeHistory
 	end
 
