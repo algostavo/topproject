@@ -91,7 +91,6 @@ require 'rufus-scheduler'
 		   				response = http.request(request)
 		   				puts response.body 
 		   				sleep(1.days)		      
-		   		  end
 		   	   	end
 		   	  end
 		   end
