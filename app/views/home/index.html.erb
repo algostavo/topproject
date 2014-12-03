@@ -42,7 +42,7 @@ locals: {tradeData: @tradeData, tradeDataHistory:
 
 <div id="chartContainer" style="height: 400px; min-width: 600px"></div>
  
-<%= render :partial => 'shared/tradeListInfo' %>
+<%= render :partial => 'shared/tradeListInfo', :locals => {:tradeData => @tradeData, :tradeDataHistory => @tradeDataHistory} %>
 
 
 <body>
@@ -56,4 +56,5 @@ This automated process is believed to be the best methodolgy for trading and inv
 The site is for educational purposes only with no investment advice given.
 </h4>
 </body>
+
 
