@@ -49,7 +49,7 @@ require 'rufus-scheduler'
 		   	response = http.request(request)
 		   	puts response.body 
 		   	sleep(1.days)
-		   elsif priceTodayH > leveL6 and priceUpToday.between?(leveL5, leveL8)
+		   if priceTodayH > leveL6 and priceUpToday.between?(leveL5, leveL8)
 		   	paid   = leveL5
 		   	stop   = paid - (paid * 0.005.to_f) 	
 		   	profit = paid + (paid * 0.015.to_f)  	
@@ -63,7 +63,7 @@ require 'rufus-scheduler'
 		   		response = http.request(request)
 		   		puts response.body 
 		   		sleep(1.days)
-		   	elsif priceUpToday and priceTodayH > leveL8
+		   	if priceUpToday and priceTodayH > leveL8
 		   		paid   = leveL6
 		   		stop   = paid - (paid * 0.005.to_f) 	
 		   		profit = paid + (paid * 0.015.to_f)  	
@@ -77,7 +77,7 @@ require 'rufus-scheduler'
 		   			response = http.request(request)
 		   			puts response.body 
 		   			sleep(1.days)			
-		   		elsif priceDnToday.between?(leveL3, leveL5) and priceTodayH < leveL8
+		   		if priceDnToday.between?(leveL3, leveL5) and priceTodayH < leveL8
 		   			paid   = leveL88
 		   			stop   = paid + (paid * 0.005.to_f) 	
 		   			profit = paid - (paid * 0.015.to_f)  	
@@ -90,7 +90,10 @@ require 'rufus-scheduler'
 		   				request['Authorization'] = 'Bearer ' + access_token                
 		   				response = http.request(request)
 		   				puts response.body 
-		   				sleep(1.days)		      
+		   				sleep(1.days)
+		   			  end
+		   			end
+		   		  end		      
 		   	   	end
 		   	  end
 		   end
